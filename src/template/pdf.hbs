@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <title>Document</title>
+
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-family: 'Heebo', Arial, Helvetica, sans-serif;
+  }
+
+  html {
+    -webkit-print-color-adjust: exact;
+  }
+
+  body {
+    width: 210mm;
+    background-color: #dfdfdf;
+    padding: 10pt;
+  }
+
+  h1, h2, h3, h4, h5, h6, strong {
+    font-family: 'Heebo', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+  }
+
+  span {
+    font-family: 'Heebo', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+  }
+
+  p {
+    font-family: 'Heebo', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+  }
+
+  body header {
+    width: 100%;
+    height: 80pt;
+    margin-bottom: 5pt;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #054366;
+    color: #efefef;
+  }
+
+  body header aside {
+    padding: 5pt;
+  }
+
+  header aside#left {
+    display: flex;
+    align-items: center;
+  }
+
+  header aside#left span {
+    margin-left: 5pt;
+    font-size: 24pt;
+  }
+
+  header aside#right {
+    margin:  10pt 10pt 10pt 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid #dfdfdf;
+  }
+
+  header aside#right p {
+    font-size: 12pt;
+    text-align: left;
+  }
+
+  header aside#right p + p {
+    margin-top: 5pt;
+  }
+
+  div.content{
+    width: 100%;
+  }
+
+  div.table-content {
+    width: 100%;
+  }
+
+  table.list {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table.list th {
+    font-size: 12pt;
+  }
+
+  table.list th, td {
+    color: #efefef;
+    padding: 5pt;
+  }
+
+  table.list thead {
+    background-color: #145e85;
+  }
+
+  table.list tbody td {
+    color: #0f0f0f;
+  }
+
+  table.list tbody tr:nth-child(even) {
+    background-color: #b9d5e0;
+  }
+
+  table.list tbody tr {
+    background-color: #d4efff;
+  }
+
+  table.list tbody tr#last-tr {
+    text-align: right;
+  }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <aside id="left">
+      <span>{{company_name}}</span>
+    </aside>
+    <aside id="right">
+      <p>telefone: {{phone}}</p>
+      <p>{{state}} - {{city}} <br>
+     {{address}}</p>
+    </aside>
+  </header>
+
+  <div class="content">
+   <div class="table-content">
+     <table class="list">
+       <thead>
+        <tr>
+          <th>Quant.</th>
+          <th>Nome</th>
+          <th>Pedra</th>
+          <th>Formato</th>
+          <th>Medidas</th>
+          <th>Acab. Superfície</th>
+          <th>Acab. Bordas</th>
+          <th>Posição Acab. Bordas</th>
+          <th>Valor</th>
+        </tr>
+       </thead>
+       <tbody>
+        {{#each orders}}
+          <tr>
+            <td>{{quantity}}x</td>
+            <td>{{name}}</td>
+            <td>{{stoneType.stone}}</td>
+            <td>{{shape}}</td>
+            <td>{{measures.displayMeasures}}{{unit}}</td>
+            <td>{{surfaceFinish}}</td>
+            <td>{{edgeFinishing}}</td>
+            <td>
+              {{#each edgeFinishingPosition }}
+                {{name}}
+              {{/each}}
+            </td>
+            <td>{{price}}</td>
+          </tr>
+        {{/each}}
+        <tr id="last-tr">
+          <td colspan="9">
+            Total: <strong>{{total}}</strong></tr>
+          </td>
+       </tbody>
+    </table>
+   </div>
+  </div>
+</body>
+</html>
