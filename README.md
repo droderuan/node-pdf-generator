@@ -9,10 +9,17 @@ The app uses handlebars to make a HTML from template.
 
 2. Download the dependencies
 
-⋅⋅⋅`npm install`
-`yarn add`⋅⋅⋅
-
-3. Start with `yarn start`
+```
+npm install
+or 
+yarn add
+```
+3. Start with 
+```
+npm run start
+or
+yarn start
+```
 
 You can change the Model and the template, and I think it will works properly.
 [See here to know how to build a template engine](https://handlebarsjs.com/guide/)
